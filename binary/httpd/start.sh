@@ -63,8 +63,8 @@ if [ ${RUNNER} = ${RUN_USER} ] || [ ${RUNNER} = root ]; then
     if [ ! -d ${LOG_HOME}/${_dir} ]; then
       mkdir -p ${LOG_HOME}/${_dir}
       if [ $? -ne 0 ]; then
-  	  echo >&2 "cannot create log directory '${LOG_HOME}/${_dir}'";
-  	  echo >&2 "Startup failed."
+  	  echo "cannot create log directory '${LOG_HOME}/${_dir}'";
+  	  echo "Startup failed."
   	  exit 1;
       fi
     fi
