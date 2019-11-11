@@ -57,18 +57,18 @@ esac
 
 if [ ${RUNNER} = ${RUN_USER} ] || [ ${RUNNER} = root ]; then
   #_log_dirs="access log"
-  _log_dirs="."
-  for _dir in `echo $_log_dirs`
-  do
-    if [ ! -d ${LOG_HOME}/${_dir} ]; then
-      mkdir -p ${LOG_HOME}/${_dir}
-      if [ $? -ne 0 ]; then
-  	  echo "cannot create log directory '${LOG_HOME}/${_dir}'";
-  	  echo "Startup failed."
-  	  exit 1;
-      fi
-    fi
-  done
+  #_log_dirs="."
+  #for _dir in `echo $_log_dirs`
+  #do
+  #  if [ ! -d ${LOG_HOME}/${_dir} ]; then
+  #    mkdir -p ${LOG_HOME}/${_dir}
+  #    if [ $? -ne 0 ]; then
+  # 	  echo "cannot create log directory '${LOG_HOME}/${_dir}'";
+  #	  echo "Startup failed."
+  #	  exit 1;
+  #    fi
+  #  fi
+  #done
 
   if [ "${_OS_NAME}" = "Linux" ] && [ ! -r /lib64/libpcre.so.0 ] && [ ! -r ${ENGN_HOME}/lib/libpcre.so.0 ]; then
     ln -s /lib64/libpcre.so.1 ${ENGN_HOME}/lib/libpcre.so.0
