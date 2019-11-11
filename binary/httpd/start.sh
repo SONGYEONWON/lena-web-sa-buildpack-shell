@@ -57,20 +57,18 @@ esac
 
 if [ ${RUNNER} = ${RUN_USER} ] || [ ${RUNNER} = root ]; then
   #_log_dirs="access log"
-  #_log_dirs="."
-  #for _dir in `echo $_log_dirs`
-  #do
-  #  if [ ! -d ${LOG_HOME}/${_dir} ]; then
-  #    mkdir -p ${LOG_HOME}/${_dir}
-  #    if [ $? -ne 0 ]; then
-  # 	  echo "cannot create log directory '${LOG_HOME}/${_dir}'";
-  #	  echo "Startup failed."
-  #	  exit 1;
-  #    fi
-  #  fi
-  #done
-
-  mkdir -p ${LOG_HOME}
+  _log_dirs="."
+  for _dir in `echo $_log_dirs`
+  do
+    if [ ! -d ${LOG_HOME}/${_dir} ]; then
+      mkdir -p ${LOG_HOME}/${_dir}
+      if [ $? -ne 0 ]; then
+  	  echo >&2 "cannot create log directory '${LOG_HOME}/${_dir}'";
+  	  echo >&2 "Startup failed."
+  	  exit 1;
+      fi
+    fi
+  done
 
   if [ "${_OS_NAME}" = "Linux" ] && [ ! -r /lib64/libpcre.so.0 ] && [ ! -r ${ENGN_HOME}/lib/libpcre.so.0 ]; then
     ln -s /lib64/libpcre.so.1 ${ENGN_HOME}/lib/libpcre.so.0
@@ -88,7 +86,7 @@ if [ ${RUNNER} = ${RUN_USER} ] || [ ${RUNNER} = root ]; then
   else
     echo "" > ${INSTALL_PATH}/conf/extra/httpd-monitoring-service-port.conf
   fi
-  ${ENGN_HOME}/bin/apachectl -f ${INSTALL_PATH}/conf/httpd.conf -k start -D${MPM_TYPE} ${EXT_MODULE_DEFINES} & tail -f $LOG_HOME/*
+  ${ENGN_HOME}/bin/apachectl -f ${INSTALL_PATH}/conf/httpd.conf -k start -D${MPM_TYPE} ${EXT_MODULE_DEFINES}& tail -f $LOG_HOME/*
   check_web_process $?
 else
    >&2 echo "Deny Access : [ ${RUNNER} ]. Not ${RUN_USER}" ;
