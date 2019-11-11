@@ -86,8 +86,9 @@ if [ ${RUNNER} = ${RUN_USER} ] || [ ${RUNNER} = root ]; then
   else
     echo "" > ${INSTALL_PATH}/conf/extra/httpd-monitoring-service-port.conf
   fi
-  ${ENGN_HOME}/bin/apachectl -f ${INSTALL_PATH}/conf/httpd.conf -k start -D${MPM_TYPE} ${EXT_MODULE_DEFINES}& tail -f $LOG_HOME/*
-  check_web_process $?
+  ${ENGN_HOME}/bin/apachectl -f ${INSTALL_PATH}/conf/httpd.conf -k start -D${MPM_TYPE} ${EXT_MODULE_DEFINES}
+  #${ENGN_HOME}/bin/apachectl -f ${INSTALL_PATH}/conf/httpd.conf -k start -D${MPM_TYPE} ${EXT_MODULE_DEFINES}& tail -f $LOG_HOME/*
+  #check_web_process $?
 else
    >&2 echo "Deny Access : [ ${RUNNER} ]. Not ${RUN_USER}" ;
    exit 0 ;
