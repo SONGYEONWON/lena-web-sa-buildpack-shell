@@ -28,9 +28,7 @@ mv $compile_cache_dir/custom .
 #tar -xzf $httpd_tgz
 cp -r $httpd_dir ./httpd
 #[[ -f custom/httpd.conf ]] && mv custom/httpd.conf httpd/conf/httpd.conf
-current_dir=$(pwd)
-echo $current_dir
-mv custom/proxy.conf httpd/conf/extra/proxy/proxy_vhost_default.conf
+#mv custom/proxy.conf httpd/conf/extra/proxy/proxy_vhost_default.conf
 #[[ -f custom/httpd-vhosts.conf ]] && mv custom/httpd.conf httpd/conf/httpd-vhosts.conf
 cp $compile_buildpack_bin/boot.sh .
 # ------------------------------------------------------------------------------------------------
