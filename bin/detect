@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 
-if [ ! ( -f $1/httpd.conf ) ]
+if [ ! ( -f $1/proxy.conf ) ]
 then
   echo "No" && exit 1
 else
