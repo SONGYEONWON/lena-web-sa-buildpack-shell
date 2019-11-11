@@ -70,6 +70,8 @@ if [ ${RUNNER} = ${RUN_USER} ] || [ ${RUNNER} = root ]; then
   #  fi
   #done
 
+  mkdir -p ${LOG_HOME}
+
   if [ "${_OS_NAME}" = "Linux" ] && [ ! -r /lib64/libpcre.so.0 ] && [ ! -r ${ENGN_HOME}/lib/libpcre.so.0 ]; then
     ln -s /lib64/libpcre.so.1 ${ENGN_HOME}/lib/libpcre.so.0
      echo "libpcre.so.0 link generated."
