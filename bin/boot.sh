@@ -1,6 +1,7 @@
 export APACHE_ROOT=/home/vcap/app/httpd
 
-mv $APACHE_ROOT/conf/httpd.conf $APACHE_ROOT/conf/httpd.conf.org
-erb $APACHE_ROOT/conf/httpd.conf.org > $APACHE_ROOT/conf/httpd.conf
+mv $APACHE_ROOT/env.sh $APACHE_ROOT/env.sh.org
+erb $APACHE_ROOT/env.sh.org > $APACHE_ROOT/env.sh
 (tail $APACHE_ROOT/logs/*log &)
-exec $APACHE_ROOT/bin/httpd -DFOREGROUND
+#exec $APACHE_ROOT/bin/httpd -DFOREGROUND
+sh $APACHE_ROOT/start.sh
