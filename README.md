@@ -1,12 +1,10 @@
-# Apache buildpack
+# LENA WEB buildpack
 
-This buildpack tries to boot strap the apache proxy inside of cloudfoundry
+레나 WEB proxy 서버를 Paas-ta / Cloud Foundry 에 적용하기위한 Buildpack 을 제공한다.
 
 ## How to
-In order to deploy the proxy to cloudfoundry.
-* The application folder has to have a httpd.conf file with <pre><code>Listen <%= ENV["PORT"] %></code></pre>
-* The httpd.conf has reverse proxy configured end of the file
-<pre><code>ProxyPass / http://spring-music.10.244.0.34.xip.io/
-ProxyPassReverse / http://spring-music.10.244.0.34.xip.io/</code></pre>
-* Deploy the reverse proxy
-<pre><code>cf push proxy -b http://github.com/datianshi/apache-buildpack</pre></code>
+* 레나 WEB 서버 적용을 위해서는 proxy.conf 파일이 필요하다.
+<pre><code>ProxyPassMatch ^/.*$ http://www.google.com</pre></code>
+* cf push 시 빌드팩을 LENA WEB 으로 지정한다.
+<pre><code>cf push -b https://github.com/lenalaborg/lena-web-buildpack1.0.git</pre></code>
+* sample 디렉토리에 proxy.conf , manifest.yml 예제가 포함되어있다.
