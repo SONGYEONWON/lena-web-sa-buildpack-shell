@@ -12,8 +12,8 @@ compile_cache_dir=$2
 compile_buildpack_dir=$(cd $(dirname $0) && cd .. && pwd)
 compile_buildpack_bin=$compile_buildpack_dir/bin
 
-#httpd_tgz="$compile_buildpack_dir/binary/lena-web-buildpack.tar.gz"
-httpd_dir="$compile_buildpack_dir/binary/httpd"
+httpd_tgz="$compile_buildpack_dir/binary/lena-web-buildpack.tar.gz"
+#httpd_dir="$compile_buildpack_dir/binary/httpd"
 
 # ------------------------------------------------------------------------------------------------
 
@@ -25,8 +25,8 @@ echo "-----> Doing work with compiling."
 mkdir -p $compile_cache_dir/custom
 mv * $compile_cache_dir/custom
 mv $compile_cache_dir/custom .
-#tar -xzf $httpd_tgz
-cp -r $httpd_dir ./httpd
+tar -xzf $httpd_tgz
+#cp -r $httpd_dir ./httpd
 #[[ -f custom/httpd.conf ]] && mv custom/httpd.conf httpd/conf/httpd.conf
 mv custom/proxy.conf httpd/conf/extra/proxy/proxy_vhost_default.conf
 #[[ -f custom/httpd-vhosts.conf ]] && mv custom/httpd.conf httpd/conf/httpd-vhosts.conf
