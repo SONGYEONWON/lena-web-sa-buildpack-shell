@@ -9,6 +9,8 @@ set -e
 
 compile_build_dir=$1
 compile_cache_dir=$2
+echo ${compile_build_dir}
+echo ${compile_cache_dir}
 compile_buildpack_dir=$(cd $(dirname $0) && cd .. && pwd)
 compile_buildpack_bin=$compile_buildpack_dir/bin
 
