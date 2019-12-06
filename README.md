@@ -8,7 +8,7 @@
   정규표현식에 해당하는 호출이 발생하면 URL에 해당하는 원격서버로 호출이 진행된다.
   아래 예제는 모든 호출을 google로 전달하는 예제이다.
 <pre><code>ProxyPassMatch ^/.*$ http://www.google.com</pre></code>
-* sample 디렉토리에 proxy.conf , manifest.yml 예제가 포함되어있다.
+* lena-web-sa-buildpack/sample 디렉토리에 proxy.conf , manifest.yml 예제가 포함되어있다.
 * cf push 시 빌드팩을 LENA WEB 으로 지정한다.
 <pre><code>cf push -b https://github.com/lenalaborg/lena-web-buildpack1.0.git</pre></code>
 
